@@ -16,6 +16,7 @@
 		1A2B3C4D5E6F708192A3C007 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A3B018 /* GameView.swift */; };
 		1A2B3C4D5E6F708192A3C008 /* PuzzleBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A3B019 /* PuzzleBoard.swift */; };
 		1A2B3C4D5E6F708192A3C009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A3B01A /* Assets.xcassets */; };
+		1A2B3C4D5E6F708192A3C00A /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A3B01D /* SoundPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		1A2B3C4D5E6F708192A3B018 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F708192A3B019 /* PuzzleBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleBoard.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F708192A3B01A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A3B01D /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1A2B3C4D5E6F708192A3B01C /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				1A2B3C4D5E6F708192A3B01D /* SoundPlayer.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		1A2B3C4D5E6F708192A3B01B /* NineGridPuzzle */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +103,7 @@
 				1A2B3C4D5E6F708192A3B00F /* Design */,
 				1A2B3C4D5E6F708192A3B011 /* Models */,
 				1A2B3C4D5E6F708192A3B010 /* Views */,
+				1A2B3C4D5E6F708192A3B01C /* Audio */,
 				1A2B3C4D5E6F708192A3B01A /* Assets.xcassets */,
 			);
 			path = NineGridPuzzle;
@@ -175,6 +186,7 @@
 				1A2B3C4D5E6F708192A3C006 /* HomeView.swift in Sources */,
 				1A2B3C4D5E6F708192A3C007 /* GameView.swift in Sources */,
 				1A2B3C4D5E6F708192A3C008 /* PuzzleBoard.swift in Sources */,
+				1A2B3C4D5E6F708192A3C00A /* SoundPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

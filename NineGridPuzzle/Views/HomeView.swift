@@ -224,6 +224,7 @@ struct HomeView: View {
             }
 
             ToggleRow(title: "触感反馈", icon: "waveform.path", isOn: $store.haptics)
+            ToggleRow(title: "音效", icon: "speaker.wave.2.fill", isOn: $store.sound)
             ToggleRow(title: "显示序号", icon: "number", isOn: $store.showNumbers)
         }
         .padding(18)

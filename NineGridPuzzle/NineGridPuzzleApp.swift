@@ -4,6 +4,11 @@ import SwiftUI
 struct NineGridPuzzleApp: App {
     @StateObject private var store = GameStore()
 
+    init() {
+        // 提前初始化音频，避免第一次滑动时卡顿
+        _ = SoundPlayer.shared
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView(store: store)

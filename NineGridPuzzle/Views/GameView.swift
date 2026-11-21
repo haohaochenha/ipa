@@ -213,12 +213,14 @@ struct GameView: View {
         }
 
         if moved, store.haptics { Haptics.tap() }
+        if moved { SoundPlayer.shared.playMove(enabled: store.sound) }
         guard game.isSolved else { return }
 
         endDate = Date()
         let result = store.submit(size: difficulty.rawValue, time: elapsed, moves: game.moves)
         newRecord = result.improvedTime && result.improvedMoves
         if store.haptics { Haptics.success() }
+        SoundPlayer.shared.playWin(enabled: store.sound)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.28) {
             withAnimation(.spring(response: 0.45, dampingFraction: 0.84)) {

@@ -91,6 +91,10 @@ final class GameStore: ObservableObject {
         didSet { defaults.set(showNumbers, forKey: Keys.numbers) }
     }
 
+    @Published var sound: Bool {
+        didSet { defaults.set(sound, forKey: Keys.sound) }
+    }
+
     @Published private(set) var stats: [String: PuzzleRecord] = [:]
 
     private enum Keys {
@@ -98,6 +102,7 @@ final class GameStore: ObservableObject {
         static let difficulty = "ng.difficulty"
         static let haptics = "ng.haptics"
         static let numbers = "ng.numbers"
+        static let sound = "ng.sound"
         static let stats = "ng.stats"
     }
 
@@ -107,6 +112,7 @@ final class GameStore: ObservableObject {
         difficulty = defaults.object(forKey: Keys.difficulty) as? Int ?? Difficulty.easy.rawValue
         haptics = defaults.object(forKey: Keys.haptics) as? Bool ?? true
         showNumbers = defaults.object(forKey: Keys.numbers) as? Bool ?? false
+        sound = defaults.object(forKey: Keys.sound) as? Bool ?? true
 
         if let data = defaults.data(forKey: Keys.stats),
            let decoded = try? JSONDecoder().decode([String: PuzzleRecord].self, from: data) {

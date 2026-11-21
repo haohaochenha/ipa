@@ -30,8 +30,14 @@ final class PuzzleGame: ObservableObject {
 
     @discardableResult
     func move(tileID: Int) -> Bool {
-        guard tileID != blankID else { return false }
-        guard !isSolved, let position = board.firstIndex(of: tileID) else { return false }
+        guard !isSolved else { return false }
+        let moved = slide(tileID: tileID)
+        if moved { moves += 1 }
+        return moved
+    }
+
+    private func slide(tileID: Int) -> Bool {
+        guard tileID != blankID, let position = board.firstIndex(of: tileID) else { return false }
 
         let blank = blankIndex
         let row = position / size
@@ -40,16 +46,17 @@ final class PuzzleGame: ObservableObject {
         let blankCol = blank % size
 
         if row == blankRow {
+            let base = row * size
             if col < blankCol {
                 for c in stride(from: blankCol, to: col, by: -1) {
-                    board[c] = board[c - 1]
+                    board[base + c] = board[base + c - 1]
                 }
             } else {
                 for c in stride(from: blankCol, to: col, by: 1) {
-                    board[c] = board[c + 1]
+                    board[base + c] = board[base + c + 1]
                 }
             }
-            board[position] = blankID
+            board[base + col] = blankID
         } else if col == blankCol {
             if row < blankRow {
                 for r in stride(from: blankRow, to: row, by: -1) {
@@ -65,7 +72,6 @@ final class PuzzleGame: ObservableObject {
             return false
         }
 
-        moves += 1
         return true
     }
 
@@ -82,13 +88,17 @@ final class PuzzleGame: ObservableObject {
     }
 
     private func shuffle() {
-        let steps = max(80, tileCount * 24)
+        let steps = max(120, tileCount * 40)
+        var lastTile = -1
         for _ in 0..<steps {
-            guard let pick = movableTileIDs().randomElement() else { break }
-            move(tileID: pick)
+            let candidates = movableTileIDs().filter { $0 != lastTile }
+            guard let pick = candidates.randomElement() else { break }
+            if slide(tileID: pick) {
+                lastTile = pick
+            }
         }
         if isSolved, let pick = movableTileIDs().randomElement() {
-            move(tileID: pick)
+            _ = slide(tileID: pick)
         }
         moves = 0
     }
