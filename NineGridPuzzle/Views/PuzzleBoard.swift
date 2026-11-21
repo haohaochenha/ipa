@@ -34,9 +34,10 @@ struct PuzzleBoard: View {
                                   y: originY + CGFloat(slot / size) * (cell + gap) + cell / 2)
                 }
 
-                ForEach(board.indices, id: \.self) { slot in
-                    let tileID = board[slot]
-                    if tileID != size * size - 1, let image = tiles[tileID] {
+                ForEach(board, id: \.self) { tileID in
+                    if tileID != size * size - 1,
+                       let image = tiles[tileID],
+                       let slot = board.firstIndex(of: tileID) {
                         tileView(image: image, tileID: tileID, cell: cell, corner: corner)
                             .position(x: originX + CGFloat(slot % size) * (cell + gap) + cell / 2,
                                       y: originY + CGFloat(slot / size) * (cell + gap) + cell / 2)

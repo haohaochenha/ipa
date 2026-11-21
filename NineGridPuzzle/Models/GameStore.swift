@@ -14,7 +14,7 @@ struct PuzzlePhoto: Identifiable {
     let asset: String
 }
 
-enum Difficulty: Int, CaseIterable, Identifiable {
+enum Difficulty: Int, CaseIterable, Identifiable, Equatable {
     case easy = 3
     case medium = 4
     case hard = 5
